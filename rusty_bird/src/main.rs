@@ -167,7 +167,6 @@ fn display_events(
     let mut rng = rand::thread_rng();
     let mut vel = velocity_query.single_mut();
     for _collision in collision_events.iter() {
-        println!("You hit an object!");
         vel.angvel = rng.gen_range(-5.0, 0.0);
         player.dead = true;
     }
@@ -203,7 +202,6 @@ fn roof(
 ) {
     for (transform, mut player) in player_query.iter_mut() {
         if transform.translation.y >= 255.0 {
-            println!("Player went above 255!");
             player.dead = true;
         }
     }
@@ -227,7 +225,6 @@ fn calculate_score (
         for wall_transform in wall_query.iter() {
             if player_transform.translation.x == wall_transform.translation.x {
                 player.score += 1;
-                println!("Score is now: {}", player.score);
             }
         }
     }
